@@ -3,7 +3,7 @@
 This is a demo of predicting isoform functions using DIFFUSE.
 
 ## Dependencies
-- [Python 2.7](https://www.python.org/downloads/release/python-2713/)</br>
+- [Python 2.7.13](https://www.python.org/downloads/release/python-2713/)</br>
 - [Keras](https://keras.io/)</br>
 - [TensorFlow-GPU](https://www.tensorflow.org/)</br>
 - [SciPy](https://www.scipy.org/)</br>
