@@ -17,5 +17,5 @@ Please set the backend of Keras as TensorFlow by modifying the [configuration fi
 - Performance in terms of AUC and AUPRC will be reported. The predictions are saved in the ./results/ directory. The first column in the file shows gene IDs, the second column shows isoform IDs and the third column shows prediction scores indicating how likely the corresponding isoforms have the GO term.
 - Note that the code and data released here are only for the demo use and the full version of DIFFUSE with its training data will be released soon.
 
-##Predicted Functions
+## Predicted Functions
 - Final predicted functions for all the isoforms are saved in the ./all_predictions/all_predictions.txt. To remove the redundancy in the GO prediction results, we discarded every GO term being the ancestor of any other GO term assigned to the same isoform.
