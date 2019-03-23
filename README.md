@@ -3,7 +3,7 @@
 This is a demo of predicting isoform functions using DIFFUSE.
 
 ## Predicted Functions
-- [Final predicted functions](https://github.com/haochenucr/DIFFUSE/tree/master/results/all_predictions.txt) for all the 39,375 isoforms on 4,184 GO terms are saved in a text file. Redundancy in the GO predictions are removed. Considering the predicted functions of an isoform, we discarded all GO terms that have a child GO term assigned to the same isoform.
+- [Final predicted functions](https://github.com/haochenucr/DIFFUSE/tree/master/results/all_predictions.txt) for all the 39,375 isoforms on 4,184 GO terms are saved in a text file. Redundancy in the GO predictions are removed. Considering the predicted functions of an isoform, all GO terms that have a child GO term assigned to the same isoform are discarded.
 
 ## Dependencies
 - [Python 2.7.13](https://www.python.org/downloads/release/python-2713/)</br>
