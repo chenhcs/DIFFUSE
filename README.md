@@ -18,4 +18,4 @@ Please set the backend of Keras as TensorFlow by modifying the [configuration fi
 - Note that the code and data released here are only for the demo use and the full version of DIFFUSE with its training data will be released soon.
 
 ## Predicted Functions
-- [Final predicted functions](https://github.com/haochenucr/DIFFUSE/tree/master/results/all_predictions.txt) for all the 39,375 isoforms on 4,184 GO terms are saved in a text file. We removed the redundancy in the GO prediction results. Considering the predicted functions of an isoform, we discarded all GO terms that have a child GO term assigned to the same isoform.
+- [Final predicted functions](https://github.com/haochenucr/DIFFUSE/tree/master/results/all_predictions.txt) for all the 39,375 isoforms on 4,184 GO terms are saved in a text file. We removed the redundancy in the GO predictions. Considering the predicted functions of an isoform, we discarded all GO terms that have a child GO term assigned to the same isoform.
