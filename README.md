@@ -27,7 +27,7 @@ Set the backend of Keras as TensorFlow by modifying the [configuration file](htt
 
 ### Train new models
 
-- Run the script `./src/train_new_model.sh` for training new models. You can change the GO term index to train models for different GO terms appeared in the [GO term lists](https://github.com/haochenucr/DIFFUSE/tree/master/data/go_terms).
+- Run the script `./src/train_new_model.sh` for training new models. You can change the GO term index to train models for different GO terms appearing in the [GO term lists](https://github.com/haochenucr/DIFFUSE/tree/master/data/go_terms).
 
 ## Citation
 
