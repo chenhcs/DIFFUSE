@@ -1,6 +1,6 @@
 # DIFFUSE
 
-DIFFUSE is a deep learning based method for predicting isoform functions by integrating the data of isoform sequences, domains and expression profiles. This is an instruction of predicting isoform functions using DIFFUSE.
+*DIFFUSE* is a deep learning based method for predicting isoform functions by integrating the data of isoform sequences, domains and expression profiles. This is an instruction of predicting isoform functions using *DIFFUSE*.
 
 ## Predicted Functions
 - [Predicted functions](https://github.com/haochenucr/DIFFUSE/tree/master/results/all_predictions.txt) for all the 39,375 isoforms on 4,184 GO terms are saved in a text file. Redundancy in the GO predictions are removed. Considering the predicted functions of an isoform, all GO terms that have a child GO term assigned to the same isoform are discarded.
@@ -27,19 +27,19 @@ Set the backend of Keras as TensorFlow by modifying the [configuration file](htt
 
 ### Train new models
 
-- Run the script `./src/train_new_model.sh` for training new models. You can change the GO term index to train models for different GO terms appeared in the [GO term lists] (https://github.com/haochenucr/DIFFUSE/tree/master/data/go_terms).
+- Run the script `./src/train_new_model.sh` for training new models. You can change the GO term index to train models for different GO terms appeared in the [GO term lists](https://github.com/haochenucr/DIFFUSE/tree/master/data/go_terms).
 
 ## Citation
 
 If you find *DIFFUSE* is useful for your research, please consider citing the following paper:
 
-@article{chen2019diffuse,
-  title={DIFFUSE: predicting isoform functions from sequences and expression profiles via deep learning},
-  author={Chen, Hao and Shaw, Dipan and Zeng, Jianyang and Bu, Dongbo and Jiang, Tao},
-  journal={Bioinformatics},
-  volume={35},
-  number={14},
-  pages={i284--i294},
-  year={2019},
-  publisher={Oxford University Press}
-}
+	@article{chen2019diffuse,
+	  title={DIFFUSE: predicting isoform functions from sequences and expression profiles via deep learning},
+	  author={Chen, Hao and Shaw, Dipan and Zeng, Jianyang and Bu, Dongbo and Jiang, Tao},
+  	  journal={Bioinformatics},
+  	  volume={35},
+  	  number={14},
+  	  pages={i284--i294},
+  	  year={2019},
+  	  publisher={Oxford University Press}
+	}
