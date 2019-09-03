@@ -1,6 +1,6 @@
 import numpy as np
 
-def generateLabel(X_test_geneid, positive_Gene):
+def generate_label(X_test_geneid, positive_Gene):
     y_test = np.array([])
 
     last_gID = ''
@@ -16,7 +16,7 @@ def generateLabel(X_test_geneid, positive_Gene):
 
     return y_test
 
-def makeBatch(seqX):
+def make_batch(seqX):
     gpl_dic = {}
     nonspace = np.sign(seqX)
     aalen = np.sum(nonspace, 1)

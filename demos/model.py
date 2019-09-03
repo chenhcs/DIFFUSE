@@ -22,7 +22,7 @@ from keras.models import Model
 from crf import CRF
 from layer.PyramidPooling import PyramidPooling
 from keras.utils import multi_gpu_model
-from utils import generateLabel, makeBatch
+from utils import generate_label, make_batch
 import time
 from sys import argv
 script, GOterm = argv
@@ -36,17 +36,17 @@ def run_crf(score_map, co_exp_net, testing_size, theta):
 
 #-------------------------------------------------------------------------------
 #Loading sequence data
-def loadSequenceData():
-    X_test_seq = np.load('../data/sequences/human_sequence_test.npy')
-    X_test_dm = np.load('../data/domains/human_domain_test.npy')
-    X_test_geneid = np.load('../data/id_lists/gene_list_test.npy')
-    X_test_isoid = np.load('../data/id_lists/isoform_list_test.npy')
+def load_sequence_data():
+    X_test_seq = np.load('../data/sequences/human_sequence_test_demo.npy')
+    X_test_dm = np.load('../data/domains/human_domain_test_demo.npy')
+    X_test_geneid = np.load('../data/id_lists/gene_list_test_demo.npy')
+    X_test_isoid = np.load('../data/id_lists/isoform_list_test_demo.npy')
 
     return X_test_seq, X_test_dm, X_test_geneid, X_test_isoid
 
 #-------------------------------------------------------------------------------
 #Loading positive and negtive set
-def posGeneSet(StudiedGOterm):
+def pos_gene_set(StudiedGOterm):
     positive_set = []
 
     fr = open('../data/annotations/human_annotations.txt', 'r')
@@ -69,16 +69,16 @@ StudiedGOterm = GOterm
 
 print('Testing model for ' + StudiedGOterm)
 
-positive_Gene = posGeneSet(StudiedGOterm)
+positive_Gene = pos_gene_set(StudiedGOterm)
 
-co_exp_net = np.load('../data/co-expression_net/cor_net_unify.npy')
-X_test_seq, X_test_dm, X_test_geneid, X_test_isoid = loadSequenceData()
+co_exp_net = np.load('../data/co-expression_net/coexp_net_unified_demo.npy')
+X_test_seq, X_test_dm, X_test_geneid, X_test_isoid = load_sequence_data()
 K_testing_size = X_test_seq.shape[0]
 seq_dim = X_test_seq.shape[1]
 dm_dim = X_test_dm.shape[1]
 
 print('Generating initial label...')
-y_test = generateLabel(X_test_geneid, positive_Gene)
+y_test = generate_label(X_test_geneid, positive_Gene)
 
 ## Model architecture
 seq_input = Input(shape=(None, ), dtype='int32', name='seq_input')
@@ -114,7 +114,7 @@ model.load_weights('../saved_models/'+ StudiedGOterm + '_DNN.h5')
 theta = np.load('../saved_models/'+ StudiedGOterm +'_CRF_weights.npy')
 
 ## Testing
-tup_idx, tup_gp = makeBatch(X_test_seq)
+tup_idx, tup_gp = make_batch(X_test_seq)
 y_pred = np.array([])
 for key in tup_gp.keys():
     sel = tup_gp[key]
