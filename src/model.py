@@ -150,7 +150,7 @@ model.compile(loss= losses.binary_crossentropy, optimizer= adam, metrics=['accur
 
 
 #Training
-nb_epoch = 3
+nb_epoch = 5
 
 unused_flag = np.zeros(y_train.shape[0])
 X_train_seq_upsmp, X_train_dm_upsmp, y_train_upsmp, unused_flag = upsample(y_train, gene_index, gene_count, X_train_seq, X_train_dm, unused_flag)
