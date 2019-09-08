@@ -31,7 +31,7 @@ class CRF(object):
             negative_index = np.where(label[0: self.training_number] == 0)
             positive_number = len(positive_index[0])
             negative_number = len(negative_index[0])
-            positive_rate = 0.1
+            positive_rate = positive_number * 1.0 / negative_number
             negative_rate = 1.0
             # print 'Cost:', -np.sum(np.log(q[label[positive_index[0]], positive_index[0]])) * negative_rate  - np.sum(np.log(q[label[negative_index[0]], negative_index[0]])) * positive_rate + np.sum(theta**2) / (2 * sigma)
             return -np.sum(np.log(q[label[positive_index[0]], positive_index[0]])) * negative_rate  - np.sum(np.log(q[label[negative_index[0]], negative_index[0]])) * positive_rate + np.sum(theta**2) / (2 * sigma)
@@ -49,7 +49,7 @@ class CRF(object):
             negative_index = np.where(label[0: self.training_number] == 0)
             positive_number = len(positive_index[0])
             negative_number = len(negative_index[0])
-            positive_rate = 0.1
+            positive_rate = positive_number * 1.0 / negative_number
             negative_rate = 1.0
 
             grad[0] = (np.sum(unary_potential[label[positive_index[0]], positive_index[0]]) - \
@@ -95,8 +95,10 @@ class CRF(object):
 
     def massage_passing(self):
         product_mat = np.transpose(np.dot(self.co_exp_net, np.transpose(self.current_q)))
-        self.pairwise_potential[0, :] = product_mat[1, :] / (2 * np.mean(product_mat))
-        self.pairwise_potential[1, :] = product_mat[0, :] / (2 * np.mean(product_mat))
+        mod = np.sum(self.co_exp_net, 1)
+        mod = np.clip(mod, 1e-8, np.max(mod))
+        self.pairwise_potential[0, :] = product_mat[1, :] / mod
+        self.pairwise_potential[1, :] = product_mat[0, :] / mod
         self.negative_energy -= self.theta[1] * self.pairwise_potential
 
     def exp_and_normalize(self, neg_energy, label_gen, scale = 1.0, relax = 1.0):

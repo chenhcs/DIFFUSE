@@ -145,7 +145,7 @@ model = Model(inputs = [seq_input, domain_input], output = output)
 
 model.summary()
 
-adam = optimizers.Adam(lr = 0.002, beta_1 = 0.9, beta_2 = 0.999, epsilon = 1e-08, decay=0.01)
+adam = optimizers.Adam(lr = 0.002, beta_1 = 0.9, beta_2 = 0.999, epsilon = 1e-08, decay=0.1)
 model.compile(loss= losses.binary_crossentropy, optimizer= adam, metrics=['accuracy'])
 
 
