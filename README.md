@@ -16,6 +16,7 @@ Set the backend of Keras as TensorFlow by modifying the [configuration file](htt
 ## Data Preparation
 - Download data from the [link](https://drive.google.com/file/d/1HkcRcGr9dNRaQfpohWHL3AX71OeG7Q0-/view?usp=sharing), unzip data.zip to the data/ folder.
 - Preprocessing code for domain, sequence and expression data are provided in the [preprocessing](https://github.com/haochenucr/DIFFUSE/tree/master/preprocessing) directory, you can use them to process your own data.
+- Raw data of Dataset#2 and Dataset#3 used in the performance comparison section can be downloaded from the [link](https://drive.google.com/file/d/1XUCnKfVOEA-A75qBO9Yyd1IS2aJbnyIJ/view?usp=sharing).
 
 ## Get Started
 
