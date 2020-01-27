@@ -1,0 +1,1 @@
+train_new_model.sh: line 5: 23611 Aborted                 python model.py $(($j+$i)) $i 2> /dev/null
