@@ -30,6 +30,10 @@ Set the backend of Keras as TensorFlow by modifying the [configuration file](htt
 
 - Run the script `./src/train_new_model.sh` for training new models. You can change the GO term index in the script to train models for different GO terms appearing in the [GO term lists](https://github.com/haochenucr/DIFFUSE/tree/master/data/go_terms).
 
+### ParaDIFFUSE
+
+- You can train DIFFUSE models parallelly with multiple GPUs. Run `./para_src/para_train.sh` to train models parallelly for mutiple GO terms. Training time can be recorded by running the script `./para_src/time.sh`.
+
 ## Citation
 
 If you find *DIFFUSE* is useful for your research, please consider citing the following paper:
