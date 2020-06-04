@@ -116,6 +116,8 @@ X_all_dm = np.vstack([X_train_dm, X_test_dm])
 seq_dim = X_train_seq.shape[1]
 dm_dim = X_train_dm.shape[1]
 
+domain_emb_dim = max([np.max(X_train_dm), np.max(X_train_other_dm), np.max(X_test_dm)])
+
 print('Generating initial label...')
 y_train, y_test, y_all, crf_bag_index, gene_index, gene_count, X_train_seq, X_train_dm= generate_label(X_train_seq, X_train_dm, X_train_other_seq, X_train_other_dm, X_train_geneid, X_train_geneid_other, X_test_geneid, positive_Gene)
 
@@ -131,7 +133,7 @@ x1 = Dense(16, kernel_regularizer=regularizers.l2(0.15))(x1)
 seq_output = Activation('relu')(x1)
 
 domain_input = Input(shape=(dm_dim, ), dtype='int32', name='domain_input')
-x2 = Embedding(input_dim = 16155, output_dim = 32, input_length = dm_dim, mask_zero = True)(domain_input)
+x2 = Embedding(input_dim = domain_emb_dim + 1, output_dim = 32, input_length = dm_dim, mask_zero = True)(domain_input)
 domain_output = LSTM(16)(x2)
 x = keras.layers.concatenate([seq_output, domain_output])
 

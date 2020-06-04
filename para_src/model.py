@@ -26,7 +26,7 @@ from keras.utils import multi_gpu_model
 from utils import generate_label, upsample, make_batch
 import time
 from sys import argv
-script, go_index,gpu_no = argv
+script, go_index, gpu_no = argv
 os.environ["CUDA_VISIBLE_DEVICES"]=gpu_no
 
 
