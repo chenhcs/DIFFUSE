@@ -30,6 +30,7 @@ aa_num_dict['R'] = 19
 aa_num_dict['G'] = 20
 
 print('Converting trigrams to numbers...')
+id_numseq_map = {}
 X_other_train = []
 protein_count = 0
 truncation_length = 6000
@@ -52,11 +53,15 @@ while True:
                 max_len = len(numseq)
             if len(numseq) > truncation_length:
                 numseq = numseq[:truncation_length]
-            X_other_train.append(numseq)
+            id_numseq_map[prot_id] = numseq
             protein_count += 1
             print prot_id
 fr.close()
 
+for id in train_prot_id:
+    X_other_train.append(id_numseq_map[id])
+
+id_numseq_map = {}
 X_train = []
 X_test = []
 iso_count = 0
@@ -77,14 +82,20 @@ while True:
         if len(numseq) > truncation_length:
             numseq = numseq[:truncation_length]
         if iso_id in train_iso_ids:
-            X_train.append(numseq)
+            id_numseq_map[iso_id] = numseq
             iso_count += 1
             print iso_id
         elif iso_id in test_iso_ids:
-            X_test.append(numseq)
+            id_numseq_map[iso_id] = numseq
             iso_count += 1
             print iso_id
 fr.close()
+
+for id in train_iso_ids:
+    X_train.append(id_numseq_map[id])
+
+for id in test_iso_ids:
+    X_test.append(id_numseq_map[id])
 
 print('Complete convertion.')
 max_len = min(max_len, truncation_length)
